@@ -95,9 +95,6 @@ ol li .text::after {
 #contact input:focus {
     background-color: lightskyblue;
 }
-#contact_message {
-    box-shadow: none;
-}	
 form {
     text-align: right;
 }
