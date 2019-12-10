@@ -27,7 +27,7 @@ section .tm-team-description-container {
 #about li:nth-child(odd):hover {
     background-color: lightgrey;
     color: lightskyblue;
-    font-family: italic, sans-serif;
+    font-style: italic;
 }
 section .padding-medium h2 {
     text-align: center;
