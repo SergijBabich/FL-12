@@ -35,6 +35,7 @@ section .padding-medium h2 {
 }
 ol li:hover:before {
     content: ">";
+    font-weight: bold;
 }
 ol li:hover {
     font-variant: slashed-zero;
