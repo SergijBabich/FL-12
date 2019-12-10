@@ -98,6 +98,9 @@ ol li .text::after {
 form {
     text-align: right;
 }
+#contact_message {
+    box-shadow: none;
+}	
 form .btn {
     background-color: #ffff;
     color: lightskyblue;
