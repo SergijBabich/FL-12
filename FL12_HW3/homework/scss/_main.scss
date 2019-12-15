@@ -1,0 +1,272 @@
+@mixin font-properties-p ($color, $font-family,$font-size, $font-weight) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  font-family: $font-family;
+  color:$color;
+  }
+  $text-aligns: (
+  "start": start,
+  "center": center,
+  "end": end
+    );
+@mixin word-decoration ( $word-spacing,  $letter-spacing) {
+  word-spacing: $word-spacing;
+  letter-spacing: $letter-spacing;
+    }
+@mixin links-font($color, $font-family,$font-size, $font-weight) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  font-family: $font-family;
+  color:$color;
+    }
+@mixin button-font {
+  color: #fff;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  word-spacing: 1px;
+  }
+@mixin button {
+  background-color:$button-color;
+  width: 145px;
+  height: 47px;
+  border-radius: 3px;
+  border: none;
+  @include font-properties-p(#fff, 'Source Sans Pro',17px,bold );
+  @include word-decoration(1px,0px);
+  }
+@mixin display-settings($display,$flex-direction, $justify-content, $align-items) {
+  display: $display;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+    }
+@mixin before-elements($width, $height, $left, $top, $z-index) {
+  content: '';
+  position: absolute;
+  left: $left;
+  z-index: $z-index;
+  top: $top;
+  background-color: $header-wrap-before;
+  width: $width;
+  height: $height;
+  }
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  width: 1920px;
+  margin: auto;
+  background-color: $section-background-color;
+}
+ .header {
+   background:$background-image;
+   background-size: 100%;
+   background-position: center;
+   background-repeat: no-repeat;
+   border-radius: 0 0 40% 0%;
+   height: 720px;
+   width: 100%;
+   margin: auto;
+
+   .header-wrap {
+      width: 80%;
+      margin: auto;
+      height: 529px;
+      @extend .flex-container;
+    div:last-child  {
+      @include display-settings(flex,unset ,space-between,center);
+      height: 18px;
+      width: 488px;
+      .header_button {
+        //#699900
+        @include button;
+        margin-bottom: -17px;
+      }
+      .login {
+        @include links-font(#fff, 'Source Sans Pro',20px,600);
+      }
+    }
+    &::before {
+      @include before-elements(303px, 50px, 191px, 230px, 1);
+    }
+   }
+
+ }
+
+.landing-logo {
+    @include display-settings(flex,unset ,unset,center);
+    height: 85px;
+    p {
+      @include display-settings(flex,column ,unset,unset);
+      margin-left: 10px;
+      text-align: map-get($text-aligns, end);
+      @include font-properties-p($logo-color,  $font-family-day-night ,23px, bold);
+    span {
+      font-weight: normal;
+      font-size: 13px;
+      }
+    }
+}
+.header_heading {
+  width: 730px;
+  @include font-properties-p( $heading-color, 'Source Sans Pro' ,70px, bold);
+  @include word-decoration(0px, 1px);
+  height: 136px;
+  z-index: 2;
+  line-height: 80px;
+
+}
+.header_text {
+  width: 681px;
+  @include font-properties-p(  $text-color,  $font-family-day-night ,16.5px, normal);
+  height: 161px;
+  white-space: pre-line;
+  text-indent: 1px;
+  line-height: 27px;
+}
+.section {
+
+  .section_text {
+      z-index: 2;
+      height: 126px;
+      @include font-properties-p(  $section-color, 'Source Sans Pro' ,46px, 600);
+      @include word-decoration(1px,-2px);
+      @include display-settings(flex,unset ,center,center);
+      margin-left: -4px;
+      text-align: map-get($text-aligns, center);
+      &::before {
+      @include before-elements(189px, 49px, 967px, 751px, -2);
+      }
+    }
+}
+.section_card_wrap {
+  width: 1117px;
+  height: 1176px;
+  margin: auto;
+
+  .section_card {
+    @include display-settings(flex,unset ,space-around,center);
+    border-radius: 7px;
+    margin-bottom: 23px;
+    height: 322px;
+    background-color: $section-card-background-color ;
+  }
+  .section_card:last-child {
+    height: 345px;
+    .section_card_img {
+    width: 44%;
+    }
+    .section_link{
+    height: 112px;
+    }
+  }
+  .section_card:first-child {
+    height: 328px;
+      .section_card_img {
+        width: 41%;
+    }
+  }
+
+  .section_card_img {
+    width: 39%;
+    padding: 19px;
+    border-radius: 23px;
+  }
+  .section_card_right_container {
+    width: 61%;
+    height: 363px;
+    @include display-settings(flex,column ,space-evenly,center);
+
+    .section_card_heading{
+      text-align: map-get($text-aligns, center);
+      height: 129px;
+      @include display-settings(flex,unset ,center,flex-end);
+      @include font-properties-p( #fff, 'Source Sans Pro' ,24px, 600);
+      @include word-decoration(-4px,0px);
+      margin-top: 31px;
+      margin-left: -4px;
+    }
+    .section_link {
+      text-align: map-get($text-aligns, center);
+      @include links-font(#fff, 'Source Sans Pro',16px,normal);
+      @include display-settings(flex,unset ,center,end);
+      height: 134px;
+    }
+    .section_card_text {
+      @include font-properties-p(#AFB3C0,  $font-family-day-night ,17px, normal);
+      @include word-decoration(1px,0px);
+      @include display-settings(flex,unset ,center,center);
+      width: 497px;
+      height: 258px;
+      }
+   }
+}
+.section_banner {
+      height: 143px;
+      width: 1198px;
+      @include display-settings(flex,unset ,space-around,center);
+      border-radius: 5px;
+      transform: translateY(75px);
+      margin: auto;
+      position: relative;
+      background: $linear-gradient;
+    .section_banner_text_wrap {
+      width: 35%;
+      z-index: 1;
+      @include display-settings(flex,column ,space-between,unset);
+      height: 100px;
+
+      &::before {
+      @include before-elements(64px, 49px, 282px, 11px, -2);
+      opacity: $before-opacity;
+      }
+    }
+    .section_banner_heading {
+      @include font-properties-p($heading-color, 'Source Sans Pro' ,30px, bold);
+
+    }
+    .section_banner_text {
+      @include font-properties-p($section-banner-text-color,  $font-family-day-night ,17px, normal);
+      height: 44px;
+    }
+    .section_banner_button {
+      @include button
+    }
+}
+.footer {
+  background-color: $footer-background-color;
+  margin: auto;
+  @include display-settings(flex,unset ,unset,center);
+  height: 243px;
+}
+.footer-wrap {
+  max-width: 1920px;
+  width: 80%;
+  height: inherit;
+    @include display-settings(flex,unset ,space-between,center);
+  margin: auto;
+}
+.footer_logo {
+  p {
+    @include font-properties-p($logo-color-footer,  $font-family-day-night ,23px, bold);
+
+  }
+}
+.footer_text {
+    @include font-properties-p(#AFB3C0,  $font-family-day-night ,15px, normal);
+    width: 313px;
+    padding-top: 12px;
+}
+.footer-cr {
+    @include font-properties-p(#AFB3C0,  $font-family-day-night ,15px, normal);
+    padding-top: 30px;
+
+}
