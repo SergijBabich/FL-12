@@ -4,12 +4,12 @@ let userPass = 'UserPass';
 let adminPass = 'AdminPass';
 let chekPass;
 let chekAnsChange;
-let a;
+let oldPass;
 let newPass;
 let newPassAgain;
 const four = 4;
 const five = 5;
-let askMail = prompt('Enter your mail', 'user@gmail.com');
+let askMail = prompt('Enter your mail', '	');
 switch (true) {
 	case askMail.trim() === '' || askMail === null:
 		alert('Canceled');
@@ -41,20 +41,20 @@ switch (true) {
 		alert('You have failed the change');
 		break;
 	case chekAnsChange === true:
-		a = prompt('Enter your old password', '');
+		oldPass = prompt('Enter your old password', '');
 		break;
 }
 switch (true) {
-	case a !== chekPass:
+	case oldPass !== chekPass:
 		alert('Wrong password');
 		break;
-	case askMail === userMail && a === userPass:
+	case askMail === userMail && oldPass === userPass:
 		newPass = prompt('Enter your new password', '');
 		break;
-	case askMail === adminMail && a === adminPass:
+	case askMail === adminMail && oldPass === adminPass:
 		newPass = prompt('Enter your new password', '');
 		break;
-	case a.trim() === '' || a === null || a === undefined:
+	case oldPass.trim() === '' || oldPass === null || oldPass === undefined:
 		alert('Canceled');
 }
 switch (true) {
