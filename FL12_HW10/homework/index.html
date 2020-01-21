@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>FL12 homework 10</title>
+  </head>
+  <body>
+    <script src="js/fighters_game.js"></script>
+  </body>
+</html>
+
+
+/* Your code goes here */
+class Fighter  {
+  constructor(name, damage, hp, strength, agility,winsCount,lossesCount) {
+    this.name= name;
+    this.damage  = damage;
+    this.hp =hp;
+    this.strength = strength;
+    this.agility = agility;
+    this.winsCount =winsCount;
+    this.lossesCount =lossesCount;
+  }
+  getName() {
+    return this.name;
+  }
+  getDamage() {
+    return this.damage;
+  }
+  getHealth() {
+    return this.hp;
+  }
+  getStrength() {
+    return this.strength;
+  }
+  getAgility() {
+    return this.agility;
+  }
+  logCombatHistory() {
+    console.log(`${this.name}, Wins: ${this.winsCount} and Losses: ${this.lossesCount}`);
+  }
+  addWin() {
+    this.winsCount++;
+  }
+  addLoss() {
+    this.lossesCount++;
+  }
+  heal(point) {
+   return this.hp + point;
+  }
+  attack(myFighter) {
+    let min = 0;
+    let max = 100;
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    let sumDefer = this.agility + this.strength;
+    let attackParams = Math.round(rand);
+    if (attackParams > sumDefer ) {
+      console.log(this.hp  = 100  - attackParams);
+       return this.hp =100 - attackParams;
+    }
+    else {
+       console.log('Commodus attack missed');
+    }
+  }
+}
+
+
+let myFighter = new Fighter('Maximus', 25,100, 30,25);
+let name = myFighter.getName();
+let damage = myFighter.getDamage();
+let strength = myFighter.getStrength();
+let agility = myFighter.getAgility();
+let health = myFighter.getHealth();
+
+
+let myFighter2 = new Fighter('Commodus', 20,100, 20,25);
+let name1 = myFighter2.getName();
+let damage1= myFighter2.getDamage();
+let strength1 = myFighter2.getStrength();
+let agility1 = myFighter2.getAgility();
+let health1 = myFighter2.getHealth();
+
+myFighter.attack(myFighter2);
+myFighter.heal(50);
+console.log(myFighter);
+console.log(myFighter2);
+
+/*
+function attack(myFighter) {
+  let min = 0;
+  let max = 100;
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  let sumDefer = agility + strength;
+  let attackParams = Math.round(rand);
+ console.log(attackParams);
+ if (attackParams > sumDefer ) {
+    return myFighter.hp =100 - attackParams;
+ }
+ else
+ console.log('Commodus attack missed');
+}
+attack(myFighter);
+*/
